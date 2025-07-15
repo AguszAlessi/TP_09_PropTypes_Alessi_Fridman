@@ -2,17 +2,18 @@ import './Home.css';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import CardProducto from '../components/CardProducto';
+import axios from 'axios';
 
 export default function Home() {
   const [destacados, setDestacados] = useState([]);
 
   useEffect(() => {
-    fetch('https://dummyjson.com/products?limit=100')
-      .then(res => res.json())
-      .then(data => {
-        const productos = data.products || [];
+    axios.get('https://dummyjson.com/products?limit=100')
+      .then(response => {
+        const productos = response.data.products || [];
         const seleccionados = [];
         const usados = new Set();
+        
         while (seleccionados.length < 4 && usados.size < productos.length) {
           const idx = Math.floor(Math.random() * productos.length);
           if (!usados.has(idx)) {
@@ -20,7 +21,11 @@ export default function Home() {
             seleccionados.push(productos[idx]);
           }
         }
+        
         setDestacados(seleccionados);
+      })
+      .catch(error => {
+        console.error('Error al obtener productos destacados:', error);
       });
   }, []);
 

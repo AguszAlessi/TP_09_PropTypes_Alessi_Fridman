@@ -1,15 +1,20 @@
 import { Link, NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import './Navbar.css';
+import axios from 'axios';
 
 function Navbar() {
   const [categorias, setCategorias] = useState([]);
   const [mostrarMenu, setMostrarMenu] = useState(false);
 
   useEffect(() => {
-    fetch('https://dummyjson.com/products/categories')
-      .then(res => res.json())
-      .then(data => setCategorias(data));
+    axios.get('https://dummyjson.com/products/categories')
+      .then(response => {
+        setCategorias(response.data);
+      })
+      .catch(error => {
+        console.error('Error al obtener categorías:', error);
+      });
   }, []);
 
   return (
