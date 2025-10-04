@@ -67,3 +67,6 @@ export default function Productos() {
     </div>
   );
 }
+
+// Productos component doesn't receive props, but uses useParams hook
+// The idCategoria comes from the URL params, not as a prop

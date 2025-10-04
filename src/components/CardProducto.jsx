@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { productShape } from '../propTypes/shapes';
 import './CardProducto.css';
 
 export default function CardProducto({ producto }) {
@@ -14,17 +15,5 @@ export default function CardProducto({ producto }) {
 }
 
 CardProducto.propTypes = {
-  producto: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string,
-    price: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-    discountPercentage: PropTypes.number,
-    rating: PropTypes.number,
-    stock: PropTypes.number,
-    brand: PropTypes.string,
-    category: PropTypes.string,
-    thumbnail: PropTypes.string.isRequired,
-    images: PropTypes.arrayOf(PropTypes.string),
-  }).isRequired,
+  producto: productShape.isRequired,
 };

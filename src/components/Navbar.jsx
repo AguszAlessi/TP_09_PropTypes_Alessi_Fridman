@@ -1,5 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import { categoryShape } from '../propTypes/shapes';
 import './Navbar.css';
 import axios from 'axios';
 
