@@ -15,7 +15,6 @@ export default function ProductoDetalle() {
       .catch(error => console.error('Error al cargar producto:', error));
   }, [idProducto]);
   
-  // Cargar productos relacionados (de la misma categoría)
   useEffect(() => {
     if (!producto?.category) return;
   
