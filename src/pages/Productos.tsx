@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import CardProducto from '../components/CardProducto';
+import { Product } from '../types';
 import './Productos.css';
 import axios from 'axios';
 
 export default function Productos() {
-  const [productos, setProductos] = useState([]);
-  const [page, setPage] = useState(1);
-  const [total, setTotal] = useState(0);
-  const { idCategoria } = useParams();
+  const [productos, setProductos] = useState<Product[]>([]);
+  const [page, setPage] = useState<number>(1);
+  const [total, setTotal] = useState<number>(0);
+  const { idCategoria } = useParams<{ idCategoria?: string }>();
 
   useEffect(() => {
     setPage(1);

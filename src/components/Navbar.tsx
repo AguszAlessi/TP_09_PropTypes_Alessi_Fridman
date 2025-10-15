@@ -1,13 +1,12 @@
 import { Link, NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import { categoryShape } from '../propTypes/shapes';
+import { Category } from '../types';
 import './Navbar.css';
 import axios from 'axios';
 
 function Navbar() {
-  const [categorias, setCategorias] = useState([]);
-  const [mostrarMenu, setMostrarMenu] = useState(false);
+  const [categorias, setCategorias] = useState<Category[]>([]);
+  const [mostrarMenu, setMostrarMenu] = useState<boolean>(false);
 
   useEffect(() => {
     axios.get('https://dummyjson.com/products/categories')

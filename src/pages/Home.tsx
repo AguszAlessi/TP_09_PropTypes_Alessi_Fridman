@@ -2,10 +2,11 @@ import './Home.css';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import CardProducto from '../components/CardProducto';
+import { Product } from '../types';
 import axios from 'axios';
 
 export default function Home() {
-  const [destacados, setDestacados] = useState([]);
+  const [destacados, setDestacados] = useState<Product[]>([]);
 
   useEffect(() => {
     axios.get('https://dummyjson.com/products?limit=100')

@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { productShape } from '../propTypes/shapes';
+import { CardProductoProps } from '../types';
 import './CardProducto.css';
 
-export default function CardProducto({ producto }) {
+export default function CardProducto({ producto }: CardProductoProps) {
   return (
     <div className="card">
       <h3>{producto.title}</h3>
@@ -13,7 +12,3 @@ export default function CardProducto({ producto }) {
     </div>
   );
 }
-
-CardProducto.propTypes = {
-  producto: productShape.isRequired,
-};

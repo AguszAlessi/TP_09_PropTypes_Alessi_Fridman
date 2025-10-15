@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './ProductoDetalle.css';
 import CardProducto from '../components/CardProducto';
+import { Product } from '../types';
 import axios from 'axios';
 
 export default function ProductoDetalle() {
-  const [producto, setProducto] = useState(null);
-  const [relacionados, setRelacionados] = useState([]);
-  const { idProducto } = useParams();
+  const [producto, setProducto] = useState<Product | null>(null);
+  const [relacionados, setRelacionados] = useState<Product[]>([]);
+  const { idProducto } = useParams<{ idProducto: string }>();
 
   useEffect(() => {
     axios.get(`https://dummyjson.com/products/${idProducto}`)
