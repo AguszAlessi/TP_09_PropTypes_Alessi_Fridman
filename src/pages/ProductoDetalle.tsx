@@ -21,7 +21,7 @@ export default function ProductoDetalle() {
   
     axios.get(`https://dummyjson.com/products/category/${producto.category}`)
       .then(response => {
-        const productos = response.data.products.filter(p => p.id !== producto.id);
+        const productos = response.data.products.filter((p: Product) => p.id !== producto.id);
         const seleccionados = [];
         const usados = new Set();
   
